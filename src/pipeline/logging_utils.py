@@ -2,7 +2,7 @@
 
 Every record carries: timestamp (UTC ISO-8601), level, pipeline_run_id, stage,
 event, message and — where relevant — rows_in / rows_out / duration_s / error.
-Records go to stdout (captured by Airflow task logs) and to
+Records go to stderr (captured by Airflow task logs; stdout is kept for command results) and to
 logs/pipeline_<run_id>.jsonl so one DAG run can be traced end to end.
 """
 from __future__ import annotations
@@ -48,7 +48,9 @@ class JsonFormatter(logging.Formatter):
 class _RunAdapter(logging.LoggerAdapter):
     def process(self, msg, kwargs):
         extra = dict(self.extra)
-        extra.update(kwargs.pop("extra", {}) or {})
+        for key, value in (kwargs.pop("extra", {}) or {}).items():
+            # LogRecord reserves names like 'message'/'args'; never crash a stage over a field name.
+            extra[f"field_{key}" if key in _STD_ATTRS else key] = value
         kwargs["extra"] = extra
         return msg, kwargs
 
@@ -58,7 +60,7 @@ def get_logger(run_id: str, stage: str, logs_dir: Path | None = None) -> logging
     if not getattr(logger, "_configured", False):
         logger.setLevel(logging.INFO)
         logger.propagate = False
-        stream = logging.StreamHandler(sys.stdout)
+        stream = logging.StreamHandler(sys.stderr)  # stdout is reserved for command results
         stream.setFormatter(JsonFormatter())
         logger.addHandler(stream)
         if logs_dir is not None:

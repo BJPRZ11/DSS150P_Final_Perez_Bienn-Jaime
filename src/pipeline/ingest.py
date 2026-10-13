@@ -133,7 +133,7 @@ def ingest(cfg: Config, run_id: str, mode: str, source_path: Path | None = None,
     }
     if start > end:
         summary.update({"new_rows": 0, "batch_id": None, "row_start": None, "row_end": None,
-                        "message": "No new source rows beyond the checkpoint — nothing to ingest (idempotent rerun)."})
+                        "note": "No new source rows beyond the checkpoint — nothing to ingest (idempotent rerun)."})
         return summary
 
     batch = df.iloc[start - 1:end].copy()
