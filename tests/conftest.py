@@ -83,6 +83,9 @@ def log():
 
 
 def postgres_available() -> bool:
+    from pipeline.config import load_dotenv
+
+    load_dotenv(REPO)  # the isolated test project has no .env; use the repository's
     if not os.environ.get("POSTGRES_PASSWORD"):
         return False
     try:
