@@ -56,7 +56,9 @@ def write_table(df: pd.DataFrame, base: Path, fmt: str) -> Path:
     return target
 
 
-def read_table(base: Path, fmt: str) -> pd.DataFrame:
+def read_table(base: Path, fmt: str, preserve_empty_strings: bool = False) -> pd.DataFrame:
+    """Read a layer back. `preserve_empty_strings=True` keeps '' as '' in string
+    columns (used for the raw layer, which stores source fields verbatim)."""
     target = layer_path(base, fmt)
     if not target.exists():
         raise FileNotFoundError(f"Layer file not found: {target}")
@@ -73,8 +75,9 @@ def read_table(base: Path, fmt: str) -> pd.DataFrame:
     )
     for col, kind in kinds.items():
         if kind == "string":
-            # Empty string in a string column is a real NULL written by to_csv.
-            df[col] = df[col].astype(object).where(df[col] != "", None)
+            if not preserve_empty_strings:
+                # Empty string in a string column is a NULL written by to_csv.
+                df[col] = df[col].astype(object).where(df[col] != "", None)
         elif kind == "datetime_utc":
             df[col] = pd.to_datetime(df[col], utc=True, format="ISO8601")
         elif kind == "datetime":
