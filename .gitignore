@@ -13,10 +13,11 @@ data/**
 # --- Logs / generated outputs -------------------------------------------------
 logs/*
 !logs/.gitkeep
+!logs/airflow/
+logs/airflow/*
+!logs/airflow/.gitkeep
 
-# --- Airflow runtime ----------------------------------------------------------
-airflow/logs/
-airflow/plugins/
+# --- Airflow runtime (task logs are written to logs/airflow/) -------------------
 airflow-webserver.pid
 standalone_admin_password.txt
 

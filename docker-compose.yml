@@ -30,7 +30,7 @@ x-airflow-common: &airflow-common
     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
   volumes:
     - ./:/opt/project
-    - ./airflow/logs:/opt/airflow/logs
+    - ./logs/airflow:/opt/airflow/logs
   depends_on: &airflow-depends
     airflow-db:
       condition: service_healthy
