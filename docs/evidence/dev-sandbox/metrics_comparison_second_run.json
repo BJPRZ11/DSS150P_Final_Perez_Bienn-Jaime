@@ -1,0 +1,272 @@
+{
+  "tolerance_rule": "|reproduced - baseline| <= 0.01 for every model metric; counts and split membership exact",
+  "abs_tolerance": 0.01,
+  "seed": 42,
+  "imputation_fit_scope": "full",
+  "metric_rows": [
+    {
+      "model": "logistic_regression",
+      "metric": "test.f1_weighted",
+      "role": "primary",
+      "baseline": 0.656994,
+      "reproduced": 0.656994,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "test.accuracy",
+      "role": "secondary",
+      "baseline": 0.673004,
+      "reproduced": 0.673004,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "test.precision_weighted",
+      "role": "secondary",
+      "baseline": 0.673589,
+      "reproduced": 0.673589,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "test.recall_weighted",
+      "role": "secondary",
+      "baseline": 0.673004,
+      "reproduced": 0.673004,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "cv_f1_weighted.mean",
+      "role": "secondary",
+      "baseline": 0.672786,
+      "reproduced": 0.672786,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "random_forest",
+      "metric": "test.f1_weighted",
+      "role": "primary",
+      "baseline": 0.716283,
+      "reproduced": 0.716283,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "random_forest",
+      "metric": "test.accuracy",
+      "role": "secondary",
+      "baseline": 0.71673,
+      "reproduced": 0.71673,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "random_forest",
+      "metric": "test.precision_weighted",
+      "role": "secondary",
+      "baseline": 0.715967,
+      "reproduced": 0.715967,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "random_forest",
+      "metric": "test.recall_weighted",
+      "role": "secondary",
+      "baseline": 0.71673,
+      "reproduced": 0.71673,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "random_forest",
+      "metric": "cv_f1_weighted.mean",
+      "role": "secondary",
+      "baseline": 0.707718,
+      "reproduced": 0.707718,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "gradient_boosting",
+      "metric": "test.f1_weighted",
+      "role": "primary",
+      "baseline": 0.704445,
+      "reproduced": 0.704445,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "gradient_boosting",
+      "metric": "test.accuracy",
+      "role": "secondary",
+      "baseline": 0.705323,
+      "reproduced": 0.705323,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "gradient_boosting",
+      "metric": "test.precision_weighted",
+      "role": "secondary",
+      "baseline": 0.703983,
+      "reproduced": 0.703983,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "gradient_boosting",
+      "metric": "test.recall_weighted",
+      "role": "secondary",
+      "baseline": 0.705323,
+      "reproduced": 0.705323,
+      "abs_diff": 0.0,
+      "within_tolerance": true,
+      "classification": "exact_match"
+    },
+    {
+      "model": "gradient_boosting",
+      "metric": "cv_f1_weighted.mean",
+      "role": "secondary",
+      "baseline": 0.71221,
+      "reproduced": 0.711814,
+      "abs_diff": 0.000396,
+      "within_tolerance": true,
+      "classification": "worse_within_tolerance"
+    }
+  ],
+  "count_rows": [
+    {
+      "item": "source",
+      "baseline": 54255,
+      "reproduced": 54255,
+      "match": true
+    },
+    {
+      "item": "staging",
+      "baseline": 30545,
+      "reproduced": 30545,
+      "match": true
+    },
+    {
+      "item": "curated",
+      "baseline": 11558,
+      "reproduced": 11558,
+      "match": true
+    },
+    {
+      "item": "model_features",
+      "baseline": 2628,
+      "reproduced": 2628,
+      "match": true
+    },
+    {
+      "item": "train",
+      "baseline": 2102,
+      "reproduced": 2102,
+      "match": true
+    },
+    {
+      "item": "test",
+      "baseline": 526,
+      "reproduced": 526,
+      "match": true
+    },
+    {
+      "item": "class_Unhealthy",
+      "baseline": 1513,
+      "reproduced": 1513,
+      "match": true
+    },
+    {
+      "item": "class_Safe",
+      "baseline": 1115,
+      "reproduced": 1115,
+      "match": true
+    },
+    {
+      "item": "logistic_regression_true_safe_correct",
+      "baseline": 98,
+      "reproduced": 98,
+      "match": true
+    },
+    {
+      "item": "random_forest_true_safe_correct",
+      "baseline": 146,
+      "reproduced": 146,
+      "match": true
+    },
+    {
+      "item": "gradient_boosting_true_safe_correct",
+      "baseline": 141,
+      "reproduced": 141,
+      "match": true
+    }
+  ],
+  "split_rows": [
+    {
+      "item": "train_keys_sha256",
+      "baseline": "c004b47cd002837fc11076c0c12d0ae254aa670e46d280a31640a7e87d23e275",
+      "reproduced": "c004b47cd002837fc11076c0c12d0ae254aa670e46d280a31640a7e87d23e275",
+      "match": true
+    },
+    {
+      "item": "test_keys_sha256",
+      "baseline": "9b330835238f79669013bb34ef8faff1000abd94b77ffccdec0f99c38182106a",
+      "reproduced": "9b330835238f79669013bb34ef8faff1000abd94b77ffccdec0f99c38182106a",
+      "match": true
+    }
+  ],
+  "applicable": true,
+  "best_model_by_cv_f1": {
+    "baseline": "gradient_boosting",
+    "reproduced": "gradient_boosting",
+    "match": true
+  },
+  "summary": {
+    "counts_exact": true,
+    "split_membership_exact": true,
+    "metrics_within_tolerance": true,
+    "metrics_exact": false,
+    "n_metrics": 15,
+    "n_nonzero_differences": 1,
+    "max_abs_diff": 0.000396,
+    "nonzero_differences": [
+      {
+        "model": "gradient_boosting",
+        "metric": "cv_f1_weighted.mean",
+        "baseline": 0.71221,
+        "reproduced": 0.711814,
+        "abs_diff": 0.000396
+      }
+    ]
+  },
+  "status": "pass",
+  "outcome": "Matches within tolerance (1 non-zero difference(s), explained in docs/reproducibility_report.md)",
+  "pipeline_run_id": "dbrun2",
+  "layer_fingerprints": {
+    "staging": "ad1126c474ec406500f192b48542eb56511d1fd8c5b9cc16bd044dc8e7251b3f",
+    "curated": "6a75d31b084d16e73339a6e7ae490ca2df0b38157e8daa0950ca5802b05f73ea",
+    "model_features": "791ab9ac33d2e02685fde70d883e7710c3458e58d13fef8cf8171e2954dcc05a"
+  }
+}

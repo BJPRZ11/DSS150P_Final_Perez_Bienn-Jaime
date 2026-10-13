@@ -1,0 +1,243 @@
+{
+  "duplicate_business_keys": [
+    {
+      "table_name": "ml.predictions",
+      "row_count": 1578,
+      "duplicate_business_keys": 0
+    },
+    {
+      "table_name": "curated.station_day_pollutants",
+      "row_count": 11558,
+      "duplicate_business_keys": 0
+    },
+    {
+      "table_name": "staging.air_quality_readings",
+      "row_count": 30545,
+      "duplicate_business_keys": 0
+    }
+  ],
+  "recent_runs": [
+    {
+      "pipeline_run_id": "manual__2026-10-13T07_40_00.000000_00_00",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "fi_db_unavailable_20261013T071301Z",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071244Z",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071225Z",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "fi_invalid_row_20261013T071221Z",
+      "status": "failed",
+      "mode": "full",
+      "staging_rows": NaN,
+      "curated_rows": NaN,
+      "test_rows": NaN,
+      "prediction_rows": NaN,
+      "failed_stage": "validate_raw"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071204Z",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "fi_schema_20261013T071200Z",
+      "status": "failed",
+      "mode": "full",
+      "staging_rows": NaN,
+      "curated_rows": NaN,
+      "test_rows": NaN,
+      "prediction_rows": NaN,
+      "failed_stage": "validate_raw"
+    },
+    {
+      "pipeline_run_id": "fi_baseline_20261013T071145Z",
+      "status": "success",
+      "mode": "full",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "inc4",
+      "status": "running",
+      "mode": "incremental",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    },
+    {
+      "pipeline_run_id": "inc3",
+      "status": "success",
+      "mode": "incremental",
+      "staging_rows": "30545",
+      "curated_rows": "11558",
+      "test_rows": "526",
+      "prediction_rows": "526",
+      "failed_stage": NaN
+    }
+  ],
+  "load_log": [
+    {
+      "pipeline_run_id": "manual__2026-10-13T07_40_00.000000_00_00",
+      "table_name": "ml.predictions",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "1578",
+      "rows_in_table": "1578"
+    },
+    {
+      "pipeline_run_id": "manual__2026-10-13T07_40_00.000000_00_00",
+      "table_name": "curated.station_day_pollutants",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "11558",
+      "rows_in_table": "11558"
+    },
+    {
+      "pipeline_run_id": "manual__2026-10-13T07_40_00.000000_00_00",
+      "table_name": "staging.air_quality_readings",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "30545",
+      "rows_in_table": "30545"
+    },
+    {
+      "pipeline_run_id": "partition_demo",
+      "table_name": "curated.station_day_pollutants",
+      "scope": "country_label=Japan",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "1047",
+      "rows_in_table": "11558"
+    },
+    {
+      "pipeline_run_id": "fi_db_unavailable_20261013T071301Z",
+      "table_name": "ml.predictions",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "1578",
+      "rows_in_table": "1578"
+    },
+    {
+      "pipeline_run_id": "fi_db_unavailable_20261013T071301Z",
+      "table_name": "curated.station_day_pollutants",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "11558",
+      "rows_in_table": "11558"
+    },
+    {
+      "pipeline_run_id": "fi_db_unavailable_20261013T071301Z",
+      "table_name": "staging.air_quality_readings",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "30545",
+      "rows_in_table": "30545"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071244Z",
+      "table_name": "ml.predictions",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "1578",
+      "rows_in_table": "1578"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071244Z",
+      "table_name": "curated.station_day_pollutants",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "11558",
+      "rows_in_table": "11558"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071244Z",
+      "table_name": "staging.air_quality_readings",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "30545",
+      "rows_in_table": "30545"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071225Z",
+      "table_name": "ml.predictions",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "1578",
+      "rows_in_table": "1578"
+    },
+    {
+      "pipeline_run_id": "fi_recovery_20261013T071225Z",
+      "table_name": "curated.station_day_pollutants",
+      "scope": "full",
+      "inserted": "0",
+      "updated": "0",
+      "deleted": "0",
+      "unchanged": "11558",
+      "rows_in_table": "11558"
+    }
+  ]
+}

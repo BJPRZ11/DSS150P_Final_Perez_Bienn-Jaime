@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- python
+rootdir: <repo>
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 36 items / 1 skipped
+
+tests/integration/test_pipeline_integration.py::test_full_ingest_to_curated PASSED [  2%]
+tests/integration/test_pipeline_integration.py::test_rerun_full_mode_does_not_duplicate_raw PASSED [  5%]
+tests/integration/test_pipeline_integration.py::test_incremental_batches_then_idempotent_noop PASSED [  8%]
+tests/integration/test_pipeline_integration.py::test_bad_batch_is_quarantined_and_checkpoint_not_advanced PASSED [ 11%]
+tests/integration/test_pipeline_integration.py::test_incremental_refuses_changed_source PASSED [ 13%]
+tests/integration/test_postgres_and_e2e.py::test_load_is_idempotent_and_detects_changes PASSED [ 16%]
+tests/integration/test_postgres_and_e2e.py::test_partition_scoped_load_leaves_other_partitions PASSED [ 19%]
+tests/integration/test_postgres_and_e2e.py::test_end_to_end_reproduces_baseline PASSED [ 22%]
+tests/unit/test_quality_and_repro.py::test_clean_model_frame_passes_all_checks PASSED [ 25%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_schema_feature_order] PASSED [ 27%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_no_nulls] PASSED [ 30%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_key_unique] PASSED [ 33%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_label_values] PASSED [ 36%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_ox_equals_sum] PASSED [ 38%]
+tests/unit/test_quality_and_repro.py::test_checks_detect_invalid_conditions[<lambda>-mf_label_matches_who_rule] PASSED [ 41%]
+tests/unit/test_quality_and_repro.py::test_leakage_guard_rejects_pm10_feature PASSED [ 44%]
+tests/unit/test_quality_and_repro.py::test_raw_schema_and_parse_checks PASSED [ 47%]
+tests/unit/test_quality_and_repro.py::test_split_integrity_detects_overlap PASSED [ 50%]
+tests/unit/test_quality_and_repro.py::test_repro_exact_match_passes PASSED [ 52%]
+tests/unit/test_quality_and_repro.py::test_repro_small_difference_within_tolerance PASSED [ 55%]
+tests/unit/test_quality_and_repro.py::test_repro_material_difference_or_count_change_fails PASSED [ 58%]
+tests/unit/test_quality_and_repro.py::test_repro_other_seed_is_not_applicable PASSED [ 61%]
+tests/unit/test_quality_and_repro.py::test_invalid_config_value_rejected PASSED [ 63%]
+tests/unit/test_quality_and_repro.py::test_config_paths_are_relative PASSED [ 66%]
+tests/unit/test_quality_and_repro.py::test_layer_roundtrip_preserves_logical_records[csv] PASSED [ 69%]
+tests/unit/test_quality_and_repro.py::test_layer_roundtrip_preserves_logical_records[parquet] SKIPPED [ 72%]
+tests/unit/test_quality_and_repro.py::test_contract_value_lists_have_no_yaml_booleans PASSED [ 75%]
+tests/unit/test_transform_features.py::test_implicit_na_matches_pandas_defaults PASSED [ 77%]
+tests/unit/test_transform_features.py::test_dedup_happens_before_unit_filter_and_keeps_first PASSED [ 80%]
+tests/unit/test_transform_features.py::test_cleaning_rules PASSED        [ 83%]
+tests/unit/test_transform_features.py::test_parse_coordinates_handles_missing PASSED [ 86%]
+tests/unit/test_transform_features.py::test_pivot_station_day_daily_mean_and_order PASSED [ 88%]
+tests/unit/test_transform_features.py::test_who_label_boundary_is_exclusive PASSED [ 91%]
+tests/unit/test_transform_features.py::test_engineered_features PASSED   [ 94%]
+tests/unit/test_transform_features.py::test_impute_with_flags_uses_given_or_own_median PASSED [ 97%]
+tests/unit/test_transform_features.py::test_model_features_exclude_pm10_and_follow_contract_order PASSED [100%]
+
+=========================== short test summary info ============================
+SKIPPED [1] tests/integration/test_dag_integrity.py:11: could not import 'airflow.models': No module named 'airflow'
+SKIPPED [1] tests/unit/test_quality_and_repro.py:160: could not import 'pyarrow': No module named 'pyarrow'
+======================== 35 passed, 2 skipped in 14.81s ========================

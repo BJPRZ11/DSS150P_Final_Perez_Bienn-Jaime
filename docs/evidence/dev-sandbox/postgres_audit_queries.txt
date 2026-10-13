@@ -1,0 +1,64 @@
+           table_name           | row_count | duplicate_business_keys 
+--------------------------------+-----------+-------------------------
+ ml.predictions                 |      1578 |                       0
+ curated.station_day_pollutants |     11558 |                       0
+ staging.air_quality_readings   |     30545 |                       0
+(3 rows)
+
+             pipeline_run_id              | status  |    mode     | staging_rows | curated_rows | test_rows | prediction_rows | failed_stage 
+------------------------------------------+---------+-------------+--------------+--------------+-----------+-----------------+--------------
+ manual__2026-10-13T07_40_00.000000_00_00 | success | full        |        30545 |        11558 |       526 |             526 | 
+ fi_db_unavailable_20261013T071301Z       | success | full        |        30545 |        11558 |       526 |             526 | 
+ fi_recovery_20261013T071244Z             | success | full        |        30545 |        11558 |       526 |             526 | 
+ fi_recovery_20261013T071225Z             | success | full        |        30545 |        11558 |       526 |             526 | 
+ fi_invalid_row_20261013T071221Z          | failed  | full        |              |              |           |                 | validate_raw
+ fi_recovery_20261013T071204Z             | success | full        |        30545 |        11558 |       526 |             526 | 
+ fi_schema_20261013T071200Z               | failed  | full        |              |              |           |                 | validate_raw
+ fi_baseline_20261013T071145Z             | success | full        |        30545 |        11558 |       526 |             526 | 
+ inc4                                     | success | incremental |        30545 |        11558 |       526 |             526 | 
+ inc3                                     | success | incremental |        30545 |        11558 |       526 |             526 | 
+ inc2                                     | success | incremental |        22754 |         9973 |       221 |             221 | 
+ inc1                                     | success | incremental |        11706 |         6877 |        41 |              41 | 
+ dbrun2                                   | success | full        |        30545 |        11558 |       526 |             526 | 
+ dbrun1                                   | success | full        |        30545 |        11558 |       526 |             526 | 
+(14 rows)
+
+ pipeline_run_id |           table_name           |        scope        | inserted | updated | deleted | unchanged | rows_in_table 
+-----------------+--------------------------------+---------------------+----------+---------+---------+-----------+---------------
+ dbrun1          | staging.air_quality_readings   | full                |    30545 |       0 |       0 |         0 |         30545
+ dbrun1          | curated.station_day_pollutants | full                |    11558 |       0 |       0 |         0 |         11558
+ dbrun1          | ml.predictions                 | full                |     1578 |       0 |       0 |         0 |          1578
+ dbrun2          | staging.air_quality_readings   | full                |        0 |       0 |       0 |     30545 |         30545
+ dbrun2          | curated.station_day_pollutants | full                |        0 |       0 |       0 |     11558 |         11558
+ dbrun2          | ml.predictions                 | full                |        0 |       0 |       0 |      1578 |          1578
+ inc1            | staging.air_quality_readings   | full                |        0 |       0 |   18839 |     11706 |         11706
+ inc1            | curated.station_day_pollutants | full                |        0 |    4474 |    4681 |      2403 |          6877
+ inc1            | ml.predictions                 | full                |       99 |      24 |    1554 |         0 |           123
+ inc2            | staging.air_quality_readings   | full                |    11048 |       0 |       0 |     11706 |         22754
+ inc2            | curated.station_day_pollutants | full                |     3096 |    3683 |       0 |      3194 |          9973
+ inc2            | ml.predictions                 | full                |      633 |      30 |      93 |         0 |           663
+ inc3            | staging.air_quality_readings   | full                |     7791 |       0 |       0 |     22754 |         30545
+ inc3            | curated.station_day_pollutants | full                |     1585 |    3804 |       0 |      6169 |         11558
+ inc3            | ml.predictions                 | full                |     1434 |     144 |     519 |         0 |          1578
+ inc4            | ml.predictions                 | full                |        0 |       0 |       0 |      1578 |          1578
+ partition_demo  | curated.station_day_pollutants | country_label=Japan |        0 |       0 |       0 |      1047 |         11558
+ inc4            | staging.air_quality_readings   | full                |        0 |       0 |       0 |     30545 |         30545
+ inc4            | curated.station_day_pollutants | full                |        0 |       0 |       0 |     11558 |         11558
+(19 rows)
+
+             pipeline_run_id              | layer |               check_id               | status 
+------------------------------------------+-------+--------------------------------------+--------
+ inc4                                     | raw   | raw_pollutant_codes_known            | failed
+ manual__2026-10-13T07_40_00.000000_00_00 | raw   | raw_pollutant_codes_known            | failed
+ fi_db_unavailable_20261013T071301Z       | raw   | raw_pollutant_codes_known            | failed
+ fi_recovery_20261013T071244Z             | raw   | raw_pollutant_codes_known            | failed
+ fi_recovery_20261013T071225Z             | raw   | raw_pollutant_codes_known            | failed
+ fi_invalid_row_20261013T071221Z          | raw   | raw_pollutant_codes_known            | failed
+ fi_invalid_row_20261013T071221Z          | raw   | raw_source_checksum_matches_manifest | failed
+ fi_invalid_row_20261013T071221Z          | raw   | raw_value_parseable                  | failed
+ fi_recovery_20261013T071204Z             | raw   | raw_pollutant_codes_known            | failed
+ fi_schema_20261013T071200Z               | raw   | raw_schema_required_columns          | failed
+ fi_schema_20261013T071200Z               | raw   | raw_pollutant_codes_known            | failed
+ fi_schema_20261013T071200Z               | raw   | raw_source_checksum_matches_manifest | failed
+(12 rows)
+

@@ -1,0 +1,310 @@
+{
+  "pipeline_run_id": "dbrun2",
+  "status": "success",
+  "started_at": "2026-10-13T07:08:32.526Z",
+  "ended_at": "2026-10-13T07:08:46.430Z",
+  "parameters": {
+    "mode": "full",
+    "seed": 42,
+    "layer_format": "csv",
+    "imputation_fit_scope": "full",
+    "use_db": true,
+    "library_versions": {
+      "python": "3.13.16",
+      "numpy": "2.5.3",
+      "pandas": "3.0.5",
+      "scikit-learn": "1.9.1"
+    }
+  },
+  "counts": {
+    "source": 54255,
+    "raw": 54255,
+    "staging": 30545,
+    "curated": 11558,
+    "model_features": 2628,
+    "train": 2102,
+    "test": 526,
+    "predictions": 526,
+    "raw_new": 54255,
+    "postgres_staging": 30545,
+    "postgres_curated": 11558
+  },
+  "stages": {
+    "ingest_source": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:32.526Z",
+      "ended_at": "2026-10-13T07:08:33.225Z",
+      "duration_s": 0.698,
+      "details": {
+        "mode": "full",
+        "source_file": "data/source/world_air_quality.csv",
+        "source_sha256": "2b2202a0fa1cffdeddf803e54dd7f822812d86de3a6449c03798bb872b272f10",
+        "source_rows": 54255,
+        "identity_matches_manifest": true,
+        "identity_mismatches": {},
+        "checkpoint_before": 54255,
+        "new_rows": 54255,
+        "batch_id": "b000001-054255_2b2202a0",
+        "row_start": 1,
+        "row_end": 54255
+      },
+      "counts": {
+        "source": 54255,
+        "raw_new": 54255
+      }
+    },
+    "validate_raw": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:33.227Z",
+      "ended_at": "2026-10-13T07:08:33.571Z",
+      "duration_s": 0.344,
+      "details": {
+        "committed_batches": [
+          "b000001-054255_2b2202a0"
+        ],
+        "last_committed_row": 54255,
+        "source_complete": true,
+        "checks_passed": 8,
+        "checks_total": 9
+      },
+      "counts": {
+        "raw": 54255
+      }
+    },
+    "transform_staging": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:33.572Z",
+      "ended_at": "2026-10-13T07:08:34.874Z",
+      "duration_s": 1.3,
+      "details": {
+        "row_counts_by_step": {
+          "raw_rows": 54255,
+          "after_pollutant_filter": 47870,
+          "after_dedup": 39796,
+          "after_unit_filter": 30853,
+          "after_value_filter": 30545,
+          "staging_rows": 30545
+        }
+      },
+      "counts": {
+        "staging": 30545
+      }
+    },
+    "build_curated": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:34.875Z",
+      "ended_at": "2026-10-13T07:08:35.344Z",
+      "duration_s": 0.468,
+      "details": {
+        "full_data_medians": {
+          "SO2": 6.0,
+          "CO": 600.0
+        },
+        "rows": 2628,
+        "class_counts": {
+          "Safe": 1115,
+          "Unhealthy": 1513
+        }
+      },
+      "counts": {
+        "curated": 11558,
+        "model_features": 2628
+      }
+    },
+    "load_postgres": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:35.348Z",
+      "ended_at": "2026-10-13T07:08:37.058Z",
+      "duration_s": 1.709,
+      "details": {
+        "load_stats": {
+          "staging.air_quality_readings": {
+            "rows_in_snapshot": 30545,
+            "inserted": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 30545,
+            "rows_in_table": 30545
+          },
+          "curated.station_day_pollutants": {
+            "rows_in_snapshot": 11558,
+            "inserted": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 11558,
+            "rows_in_table": 11558
+          }
+        },
+        "duplicate_business_keys": [
+          {
+            "table_name": "staging.air_quality_readings",
+            "row_count": 30545,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "curated.station_day_pollutants",
+            "row_count": 11558,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "ml.predictions",
+            "row_count": 1578,
+            "duplicate_business_keys": 0
+          }
+        ]
+      },
+      "counts": {
+        "postgres_staging": 30545,
+        "postgres_curated": 11558
+      }
+    },
+    "validate_curated": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:37.107Z",
+      "ended_at": "2026-10-13T07:08:37.723Z",
+      "duration_s": 0.614,
+      "details": {
+        "duplicate_business_keys": [
+          {
+            "table_name": "staging.air_quality_readings",
+            "row_count": 30545,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "curated.station_day_pollutants",
+            "row_count": 11558,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "ml.predictions",
+            "row_count": 1578,
+            "duplicate_business_keys": 0
+          }
+        ],
+        "db_rows": 11558,
+        "checks": {
+          "mf_schema_feature_order": "passed",
+          "mf_no_nulls": "passed",
+          "mf_key_unique": "passed",
+          "mf_label_values": "passed",
+          "mf_missing_flags_binary": "passed",
+          "mf_ox_equals_sum": "passed",
+          "mf_label_matches_who_rule": "passed",
+          "mf_no_leakage_features": "passed",
+          "mf_class_balance": "passed",
+          "mf_row_count_baseline": "passed",
+          "cur_schema_required_columns": "passed",
+          "cur_station_day_key_unique": "passed",
+          "cur_at_least_one_pollutant": "passed",
+          "cur_pm25_range": "passed",
+          "cur_pm25_le_pm10": "passed",
+          "cur_row_count_baseline": "passed",
+          "db_file_parity_curated": "passed",
+          "db_no_duplicate_business_keys": "passed"
+        }
+      },
+      "counts": {
+        "model_features": 2628
+      }
+    },
+    "train_model": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:37.724Z",
+      "ended_at": "2026-10-13T07:08:39.079Z",
+      "duration_s": 1.354,
+      "details": {
+        "seed": 42,
+        "models": [
+          "logistic_regression",
+          "random_forest",
+          "gradient_boosting"
+        ]
+      },
+      "counts": {
+        "train": 2102,
+        "test": 526
+      }
+    },
+    "evaluate_model": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:39.081Z",
+      "ended_at": "2026-10-13T07:08:46.172Z",
+      "duration_s": 7.09,
+      "details": {
+        "metrics": {
+          "logistic_regression": {
+            "test_accuracy": 0.673004,
+            "test_f1": 0.656994,
+            "cv_f1": 0.672786
+          },
+          "random_forest": {
+            "test_accuracy": 0.71673,
+            "test_f1": 0.716283,
+            "cv_f1": 0.707718
+          },
+          "gradient_boosting": {
+            "test_accuracy": 0.705323,
+            "test_f1": 0.704445,
+            "cv_f1": 0.711814
+          }
+        },
+        "best_model_by_cv_f1": "gradient_boosting"
+      },
+      "counts": {
+        "predictions": 526
+      }
+    },
+    "reproducibility_check": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:46.173Z",
+      "ended_at": "2026-10-13T07:08:46.181Z",
+      "duration_s": 0.007,
+      "details": {
+        "status": "pass",
+        "outcome": "Matches within tolerance (1 non-zero difference(s), explained in docs/reproducibility_report.md)",
+        "max_abs_diff": 0.000396
+      }
+    },
+    "publish_outputs": {
+      "status": "success",
+      "started_at": "2026-10-13T07:08:46.182Z",
+      "ended_at": "2026-10-13T07:08:46.429Z",
+      "duration_s": 0.246,
+      "details": {
+        "predictions_load": {
+          "rows_in_snapshot": 1578,
+          "inserted": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1578,
+          "rows_in_table": 1578
+        },
+        "metrics_rows": 18,
+        "duplicate_business_keys": [
+          {
+            "table_name": "ml.predictions",
+            "row_count": 1578,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "curated.station_day_pollutants",
+            "row_count": 11558,
+            "duplicate_business_keys": 0
+          },
+          {
+            "table_name": "staging.air_quality_readings",
+            "row_count": 30545,
+            "duplicate_business_keys": 0
+          }
+        ],
+        "published_to": "data/outputs/latest"
+      }
+    }
+  },
+  "layer_fingerprints": {
+    "staging": "ad1126c474ec406500f192b48542eb56511d1fd8c5b9cc16bd044dc8e7251b3f",
+    "curated": "6a75d31b084d16e73339a6e7ae490ca2df0b38157e8daa0950ca5802b05f73ea",
+    "model_features": "791ab9ac33d2e02685fde70d883e7710c3458e58d13fef8cf8171e2954dcc05a"
+  },
+  "error": null
+}

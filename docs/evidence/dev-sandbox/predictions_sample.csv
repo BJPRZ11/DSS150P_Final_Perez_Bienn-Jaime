@@ -1,0 +1,6 @@
+pipeline_run_id,station_day_key,country_label,city,location,reading_date,pm25_actual,label_actual,pred_logistic_regression,proba_unhealthy_logistic_regression,pred_random_forest,proba_unhealthy_random_forest,pred_gradient_boosting,proba_unhealthy_gradient_boosting,pred_deployed,split
+dbrun2,38008b9b7cbc088a03e1793e67ae4bfd,Belgium,Unknown,42N045 - HASSELT,2017-01-06,25.0,Unhealthy,Unhealthy,0.883668,Unhealthy,0.765,Unhealthy,0.720713,Unhealthy,test
+dbrun2,fe7f801d2a60b3dbfa3461ec5c3c0df3,Austria,Niederösterreich,AT0PIL1,2024-01-29,18.82999992,Unhealthy,Safe,0.291325,Safe,0.405,Safe,0.330755,Safe,test
+dbrun2,7dce27ed863f11159e62a8b2e4c56922,Austria,Niederösterreich,AT30104,2024-01-29,27.64999961,Unhealthy,Unhealthy,0.659866,Unhealthy,0.555,Unhealthy,0.591494,Unhealthy,test
+dbrun2,8eff70a3854b74567a7e750cb2a38298,Austria,Niederösterreich,AT30201,2024-01-29,28.89999961,Unhealthy,Unhealthy,0.547259,Unhealthy,0.51,Safe,0.419577,Unhealthy,test
+dbrun2,09b1371c4c708f28db7347c1cb60263f,Austria,Niederösterreich,AT30301,2024-01-29,12.30000019,Safe,Safe,0.301838,Safe,0.455,Unhealthy,0.698525,Safe,test

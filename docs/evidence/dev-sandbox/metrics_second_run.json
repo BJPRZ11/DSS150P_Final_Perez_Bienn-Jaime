@@ -1,0 +1,174 @@
+{
+  "pipeline_run_id": "dbrun2",
+  "seed": 42,
+  "imputation_fit_scope": "full",
+  "features": [
+    "NO2",
+    "O3",
+    "SO2",
+    "CO",
+    "SO2_missing",
+    "CO_missing",
+    "Ox_total_oxidant",
+    "NO2_O3_ratio"
+  ],
+  "counts": {
+    "model_features": 2628,
+    "train": 2102,
+    "test": 526,
+    "predictions": 526
+  },
+  "class_balance": {
+    "Safe": 1115,
+    "Unhealthy": 1513
+  },
+  "split": {
+    "test_size": 0.2,
+    "stratified": true,
+    "shuffle": true,
+    "train_keys_sha256": "c004b47cd002837fc11076c0c12d0ae254aa670e46d280a31640a7e87d23e275",
+    "test_keys_sha256": "9b330835238f79669013bb34ef8faff1000abd94b77ffccdec0f99c38182106a"
+  },
+  "models": {
+    "logistic_regression": {
+      "display_name": "Logistic Regression",
+      "test": {
+        "accuracy": 0.6730038022813688,
+        "precision_weighted": 0.6735889592403284,
+        "recall_weighted": 0.6730038022813688,
+        "f1_weighted": 0.6569938339815483,
+        "confusion_matrix": {
+          "labels": [
+            "Safe",
+            "Unhealthy"
+          ],
+          "rows_are": "actual",
+          "matrix": [
+            [
+              98,
+              125
+            ],
+            [
+              47,
+              256
+            ]
+          ]
+        }
+      },
+      "cv_f1_weighted": {
+        "mean": 0.6727856091164817,
+        "std": 0.023193714695064132,
+        "folds": [
+          0.6821363102816317,
+          0.6451574184672116,
+          0.680372858210318,
+          0.7074929712843927,
+          0.6487684873388548
+        ]
+      },
+      "feature_importances": null
+    },
+    "random_forest": {
+      "display_name": "Random Forest",
+      "test": {
+        "accuracy": 0.7167300380228137,
+        "precision_weighted": 0.7159669655004012,
+        "recall_weighted": 0.7167300380228137,
+        "f1_weighted": 0.7162832416337103,
+        "confusion_matrix": {
+          "labels": [
+            "Safe",
+            "Unhealthy"
+          ],
+          "rows_are": "actual",
+          "matrix": [
+            [
+              146,
+              77
+            ],
+            [
+              72,
+              231
+            ]
+          ]
+        }
+      },
+      "cv_f1_weighted": {
+        "mean": 0.7077183427542177,
+        "std": 0.008397589473863345,
+        "folds": [
+          0.7088570125473298,
+          0.7134277430257437,
+          0.718460242812354,
+          0.6939932571268976,
+          0.703853458258764
+        ]
+      },
+      "feature_importances": {
+        "O3": 0.1834388573372882,
+        "Ox_total_oxidant": 0.18024731326204418,
+        "NO2_O3_ratio": 0.17982457420940473,
+        "CO": 0.1572339412189798,
+        "NO2": 0.15703048054118907,
+        "SO2": 0.12066563623945195,
+        "CO_missing": 0.012007131558398389,
+        "SO2_missing": 0.00955206563324376
+      }
+    },
+    "gradient_boosting": {
+      "display_name": "Gradient Boosting",
+      "test": {
+        "accuracy": 0.7053231939163498,
+        "precision_weighted": 0.7039834432650964,
+        "recall_weighted": 0.7053231939163498,
+        "f1_weighted": 0.7044449363149173,
+        "confusion_matrix": {
+          "labels": [
+            "Safe",
+            "Unhealthy"
+          ],
+          "rows_are": "actual",
+          "matrix": [
+            [
+              141,
+              82
+            ],
+            [
+              73,
+              230
+            ]
+          ]
+        }
+      },
+      "cv_f1_weighted": {
+        "mean": 0.7118139388398368,
+        "std": 0.0061518453510209774,
+        "folds": [
+          0.70557461070843,
+          0.7122781005833672,
+          0.7149933023910845,
+          0.721376339507487,
+          0.7048473410088155
+        ]
+      },
+      "feature_importances": {
+        "CO": 0.32983238979692336,
+        "O3": 0.17700510947313547,
+        "NO2": 0.13310842337769477,
+        "Ox_total_oxidant": 0.12824569105808656,
+        "NO2_O3_ratio": 0.12738552588618146,
+        "SO2": 0.08923466258146455,
+        "CO_missing": 0.00981181637030814,
+        "SO2_missing": 0.005376381456205889
+      }
+    }
+  },
+  "best_model_by_cv_f1": "gradient_boosting",
+  "deployed_model": "random_forest",
+  "library_versions": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1"
+  }
+}

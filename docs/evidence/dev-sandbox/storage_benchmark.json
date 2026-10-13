@@ -1,0 +1,109 @@
+{
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1"
+  },
+  "repeats": 3,
+  "results": [
+    {
+      "dataset": "staging_readings",
+      "format": "csv",
+      "rows": 30545,
+      "write_s": 0.3021,
+      "read_s": 0.082,
+      "size_bytes": 4905927,
+      "query_s": 0.0984,
+      "rows_read_back": 30545,
+      "same_logical_records": true,
+      "max_float_abs_error": 0.0,
+      "query_result_matches": true,
+      "status": "ok"
+    },
+    {
+      "dataset": "staging_readings",
+      "format": "json_lines",
+      "rows": 30545,
+      "write_s": 0.3321,
+      "read_s": 0.3249,
+      "size_bytes": 11329878,
+      "query_s": 0.2546,
+      "rows_read_back": 30545,
+      "same_logical_records": true,
+      "max_float_abs_error": 8.881784197001252e-16,
+      "query_result_matches": true,
+      "status": "ok"
+    },
+    {
+      "dataset": "staging_readings",
+      "format": "parquet",
+      "rows": 30545,
+      "status": "skipped",
+      "reason": "`Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package."
+    },
+    {
+      "dataset": "staging_readings",
+      "format": "postgresql",
+      "rows": 30545,
+      "write_s": 0.4338,
+      "read_s": 0.3142,
+      "size_bytes": 5316608,
+      "query_s": 0.0049,
+      "rows_read_back": 30545,
+      "same_logical_records": true,
+      "max_float_abs_error": 0.0,
+      "query_result_matches": true,
+      "status": "ok"
+    },
+    {
+      "dataset": "curated_station_day",
+      "format": "csv",
+      "rows": 11558,
+      "write_s": 0.0852,
+      "read_s": 0.0273,
+      "size_bytes": 1177909,
+      "query_s": 0.0266,
+      "rows_read_back": 11558,
+      "same_logical_records": true,
+      "max_float_abs_error": 2.220446049250313e-16,
+      "query_result_matches": true,
+      "status": "ok"
+    },
+    {
+      "dataset": "curated_station_day",
+      "format": "json_lines",
+      "rows": 11558,
+      "write_s": 0.0485,
+      "read_s": 0.0644,
+      "size_bytes": 3029672,
+      "query_s": 0.08,
+      "rows_read_back": 11558,
+      "same_logical_records": true,
+      "max_float_abs_error": 8.881784197001252e-16,
+      "query_result_matches": true,
+      "status": "ok"
+    },
+    {
+      "dataset": "curated_station_day",
+      "format": "parquet",
+      "rows": 11558,
+      "status": "skipped",
+      "reason": "`Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package."
+    },
+    {
+      "dataset": "curated_station_day",
+      "format": "postgresql",
+      "rows": 11558,
+      "write_s": 0.114,
+      "read_s": 0.1159,
+      "size_bytes": 1777664,
+      "query_s": 0.0018,
+      "rows_read_back": 11558,
+      "same_logical_records": true,
+      "max_float_abs_error": 2.220446049250313e-16,
+      "query_result_matches": true,
+      "status": "ok"
+    }
+  ]
+}

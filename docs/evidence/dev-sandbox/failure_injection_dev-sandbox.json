@@ -1,0 +1,224 @@
+{
+  "generated_at": "20261013T071320Z",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "label": "dev-sandbox"
+  },
+  "baseline_run": "fi_baseline_20261013T071145Z",
+  "results": [
+    {
+      "scenario": "schema",
+      "description": "Temporary copy of the source with the required column 'Pollutant' removed.",
+      "failed_run_id": "fi_schema_20261013T071200Z",
+      "exit_code": 2,
+      "expected_failed_stage": "validate_raw",
+      "observed_error": {
+        "stage": "validate_raw",
+        "message": "DataQualityError: Data quality failure in layer 'raw': raw_schema_required_columns, raw_critical_not_null, raw_source_checksum_matches_manifest"
+      },
+      "error_line": "PIPELINE ERROR [DataQualityError]: Data quality failure in layer 'raw': raw_schema_required_columns, raw_critical_not_null, raw_source_checksum_matches_manifest",
+      "protection": {
+        "failed_as_expected": true,
+        "published_run_unchanged": true,
+        "checkpoint_not_advanced": true,
+        "no_model_outputs_for_failed_run": true,
+        "db_unchanged": true,
+        "batch_quarantined": true
+      },
+      "before": {
+        "published_run": "fi_baseline_20261013T071145Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "after_failure": {
+        "published_run": "fi_baseline_20261013T071145Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "recovery_run_id": "fi_recovery_20261013T071204Z",
+      "recovery_exit_code": 0,
+      "recovery_status": "success",
+      "after_recovery": {
+        "published_run": "fi_recovery_20261013T071204Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "invalid_row",
+      "description": "Temporary copy with one unparseable concentration (row 101: Value='not_a_number').",
+      "failed_run_id": "fi_invalid_row_20261013T071221Z",
+      "exit_code": 2,
+      "expected_failed_stage": "validate_raw",
+      "observed_error": {
+        "stage": "validate_raw",
+        "message": "DataQualityError: Data quality failure in layer 'raw': raw_value_parseable, raw_source_checksum_matches_manifest"
+      },
+      "error_line": "PIPELINE ERROR [DataQualityError]: Data quality failure in layer 'raw': raw_value_parseable, raw_source_checksum_matches_manifest",
+      "protection": {
+        "failed_as_expected": true,
+        "published_run_unchanged": true,
+        "checkpoint_not_advanced": true,
+        "no_model_outputs_for_failed_run": true,
+        "db_unchanged": true,
+        "batch_quarantined": true
+      },
+      "before": {
+        "published_run": "fi_recovery_20261013T071204Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "after_failure": {
+        "published_run": "fi_recovery_20261013T071204Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "recovery_run_id": "fi_recovery_20261013T071225Z",
+      "recovery_exit_code": 0,
+      "recovery_status": "success",
+      "after_recovery": {
+        "published_run": "fi_recovery_20261013T071225Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "invalid_config",
+      "description": "Invalid configuration value PIPELINE_LAYER_FORMAT=xlsx (environment only).",
+      "failed_run_id": "fi_invalid_config_20261013T071241Z",
+      "exit_code": 2,
+      "expected_failed_stage": "ConfigError",
+      "observed_error": null,
+      "error_line": "PIPELINE ERROR [ConfigError]: storage.layer_format must be one of ['csv', 'parquet'], got 'xlsx'",
+      "protection": {
+        "failed_as_expected": true,
+        "published_run_unchanged": true,
+        "checkpoint_not_advanced": true,
+        "no_model_outputs_for_failed_run": true,
+        "db_unchanged": true,
+        "batch_quarantined": false
+      },
+      "before": {
+        "published_run": "fi_recovery_20261013T071225Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "after_failure": {
+        "published_run": "fi_recovery_20261013T071225Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "recovery_run_id": "fi_recovery_20261013T071244Z",
+      "recovery_exit_code": 0,
+      "recovery_status": "success",
+      "after_recovery": {
+        "published_run": "fi_recovery_20261013T071244Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "db_unavailable",
+      "description": "PostgreSQL unreachable (POSTGRES_PORT pointed at a closed port); then the SAME run is resumed from load_postgres once the database is reachable again.",
+      "failed_run_id": "fi_db_unavailable_20261013T071301Z",
+      "exit_code": 2,
+      "expected_failed_stage": "load_postgres",
+      "observed_error": {
+        "stage": "load_postgres",
+        "message": "DatabaseError: Cannot connect to PostgreSQL at 127.0.0.1:5999/airquality: psql terminated: psql: error: connection to server at \"127.0.0.1\", port 5999 failed: Connection refused | \tIs the server running on that host and accepting TCP/IP connections?"
+      },
+      "error_line": "PIPELINE ERROR [DatabaseError]: Cannot connect to PostgreSQL at 127.0.0.1:5999/airquality: psql terminated: psql: error: connection to server at \"127.0.0.1\", port 5999 failed: Connection refused | \tIs the server running on that host and accepting TCP/IP connections?",
+      "protection": {
+        "failed_as_expected": true,
+        "published_run_unchanged": true,
+        "checkpoint_not_advanced": true,
+        "no_model_outputs_for_failed_run": true,
+        "db_unchanged": true,
+        "batch_quarantined": false
+      },
+      "before": {
+        "published_run": "fi_recovery_20261013T071244Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "after_failure": {
+        "published_run": "fi_recovery_20261013T071244Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "recovery_run_id": "fi_db_unavailable_20261013T071301Z",
+      "recovery_exit_code": 0,
+      "recovery_status": "success",
+      "after_recovery": {
+        "published_run": "fi_db_unavailable_20261013T071301Z",
+        "checkpoint_last_row": 54255,
+        "checkpoint_sha256": "2b2202a0fa1c",
+        "db_rows": {
+          "ml.predictions": 1578,
+          "curated.station_day_pollutants": 11558,
+          "staging.air_quality_readings": 30545
+        }
+      },
+      "verdict": "PASS"
+    }
+  ]
+}
