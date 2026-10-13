@@ -75,6 +75,10 @@ def execute_stage(cfg: Config, name: str, run_id: str, *, use_db: bool = True, *
         raise
     rec.stage_finished(name, counts=result.counts, details=result.details, fingerprints=result.fingerprints,
                        duration_s=round(time.perf_counter() - t0, 3))
+    stages_now = rec.load()["stages"]
+    if name != "publish_outputs" and stages_now.get("publish_outputs", {}).get("status") == "success" \
+            and all(st.get("status") == "success" for st in stages_now.values()):
+        rec.finalize("success")  # a re-executed stage (e.g. Airflow retry/clear) of an already-published run
     if name == "publish_outputs":
         doc = rec.finalize("success")
         latest = cfg.path("outputs_dir") / "latest"

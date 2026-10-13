@@ -164,3 +164,12 @@ def test_layer_roundtrip_preserves_logical_records(tmp_path, fmt):
     cols = list(df.columns)
     assert content_fingerprint(back, cols, ["k"]) == content_fingerprint(df, cols, ["k"])
     assert back["i"].dtype == "int64" and str(back["ts"].dt.tz) == "UTC"
+
+
+def test_contract_value_lists_have_no_yaml_booleans():
+    """Regression: unquoted NO (nitric oxide) is parsed by YAML 1.1 as False."""
+    for layer in CONTRACT["layers"].values():
+        for check in layer["checks"]:
+            if check["type"] == "accepted_values":
+                assert not any(isinstance(v, bool) for v in check["values"]), check["id"]
+    assert "NO" in next(c for c in CONTRACT["layers"]["raw"]["checks"] if c["id"] == "raw_pollutant_codes_known")["values"]

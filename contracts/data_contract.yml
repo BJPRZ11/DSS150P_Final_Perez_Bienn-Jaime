@@ -1,4 +1,5 @@
 # Data contract — machine-readable and ENFORCED by src/pipeline/quality.py.
+# YAML note: codes such as NO must be quoted ("NO"), otherwise YAML 1.1 parses them as booleans.
 # Every check below is executed by the pipeline; nothing here is documentation-only.
 #
 # Behaviour on violation (applies to every check):
@@ -50,7 +51,7 @@ layers:
       - {id: raw_location_completeness, category: completeness, type: not_null, column: Location, max_null_fraction: 0.001, severity: warn}
       - {id: raw_business_key_unique, category: uniqueness, type: unique, columns: [_source_sha256, _source_row_number], severity: error}
       - {id: raw_pollutant_codes_known, category: validity, type: accepted_values, column: Pollutant, severity: warn,
-         values: [NO2, PM2.5, O3, PM10, SO2, CO, NO, NOX, BC, PM1, TEMPERATURE, RELATIVEHUMIDITY, UM003]}
+         values: [NO2, PM2.5, O3, PM10, SO2, CO, "NO", NOX, BC, PM1, TEMPERATURE, RELATIVEHUMIDITY, UM003]}
       - {id: raw_source_checksum_matches_manifest, category: freshness, type: source_checksum, severity: error}
       - {id: raw_row_count_matches_manifest, category: freshness, type: row_count, equals_manifest: true, severity: error, applies_when: complete_source}
 
