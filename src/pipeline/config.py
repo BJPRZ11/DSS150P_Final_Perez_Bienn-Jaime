@@ -109,8 +109,23 @@ def validate_config(cfg: Config) -> None:
         raise ConfigError(f"reproducibility.abs_tolerance must be in [0, 1), got {tol!r}")
 
 
+def load_dotenv(root: Path) -> None:
+    """Load KEY=VALUE pairs from <root>/.env into os.environ WITHOUT overriding
+    variables that are already set (containers get theirs from docker-compose)."""
+    env_file = root / ".env"
+    if not env_file.exists():
+        return
+    for line in env_file.read_text(encoding="utf-8-sig").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
 def load_config(path: str | os.PathLike | None = None) -> Config:
     root = project_root()
+    load_dotenv(root)
     cfg_path = Path(path) if path else Path(os.environ.get("PIPELINE_CONFIG", root / "config" / "pipeline.yml"))
     if not cfg_path.is_absolute():
         cfg_path = root / cfg_path
